@@ -7,7 +7,30 @@ async function  getVideos() {
     return videos;
 }
 
+async function postVideo(payload) {
+  const request = await fetch(
+    apiEndpoint,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(
+        {
+          titulo: payload.title,
+          descricao: `${payload.description} mil visualizações`,
+          url: payload.url,
+          imagem: payload.image
+        }
+      )
+    }
+  );
+  const response = await request.json();
+  
+  return response;
+}
 
 export const api = {
-  getVideos
+  getVideos,
+  postVideo
 }
