@@ -17,6 +17,7 @@ function buildVideoLi(video) {
       <p>${video.descricao}</p>
     </div>
   `
+  
   return li;
 }
 

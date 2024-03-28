@@ -1,10 +1,10 @@
 const apiEndpoint = "http://localhost:3000/videos"
 
 async function  getVideos() {
-    const request = await fetch(apiEndpoint);
-    const videos = await request.json();
-  
-    return videos;
+  const request = await fetch(apiEndpoint);
+  const videos = await request.json();
+
+  return videos;
 }
 
 async function postVideo(payload) {
