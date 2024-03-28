@@ -1,4 +1,4 @@
-import { api } from "./api.js";
+import { postVideo } from "./api.js";
 
 const form = document.querySelector("[data-form]");
 
@@ -10,14 +10,14 @@ async function sendVideo(event) {
   const image = document.querySelector("[data-image]").value;
   const description = Math.floor(Math.random() * 10).toString();
 
-  const newVideo = {
+  const payload = {
     url: url,
     title: title,
     image: image,
     description: description
   };
 
-  await api.postVideo(newVideo);
+  await postVideo(payload);
 
   window.location.href = "../pages/envio-concluido.html"
 }

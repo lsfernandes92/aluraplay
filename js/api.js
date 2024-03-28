@@ -1,6 +1,6 @@
-const apiEndpoint = "http://localhost:3000/videos"
+const apiEndpoint = "http://localhost:3000/videos";
 
-async function  getVideos() {
+async function getVideos() {
   const request = await fetch(apiEndpoint);
   const videos = await request.json();
 
@@ -30,7 +30,4 @@ async function postVideo(payload) {
   return response;
 }
 
-export const api = {
-  getVideos,
-  postVideo
-}
+export { getVideos, postVideo }

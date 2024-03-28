@@ -1,4 +1,4 @@
-import { api } from "./api.js";
+import { getVideos } from "./api.js";
 
 const videosContainer = document.querySelector(".videos__container");
 
@@ -22,7 +22,7 @@ function buildVideoLi(video) {
 }
 
 async function listVideos() {
-  const videos = await api.getVideos();
+  const videos = await getVideos();
 
   videos.forEach(video => {
     videosContainer.appendChild(buildVideoLi(video));
