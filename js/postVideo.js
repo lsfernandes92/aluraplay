@@ -1,6 +1,7 @@
 import { postVideo } from "./api.js";
 
 const form = document.querySelector("[data-form]");
+const formContainer = document.querySelector(".container__formulario");
 
 async function sendVideo(event) {
   event.preventDefault();
@@ -17,9 +18,23 @@ async function sendVideo(event) {
     description: description
   };
 
-  await postVideo(payload);
+  try {
+    await postVideo(payload);
+  
+    window.location.href = "../pages/envio-concluido.html"
+  } catch (error) {
+    const divError = document.createElement("div");
 
-  window.location.href = "../pages/envio-concluido.html"
+    divError.innerHTML = `
+      <h2 class="mensagem__titulo">
+        Something went wrong on trying to add the video. 
+        ${error}
+      </h2>
+    `
+
+    formContainer.innerHTML = ''
+    formContainer.appendChild(divError);
+  }
 }
 
 form.addEventListener("submit", event => sendVideo(event));

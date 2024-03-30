@@ -10,6 +10,14 @@ async function searchVideos(event) {
 
   const videos = await getVideos(searchInput);
 
+  if (videos.length == 0) {
+    return videosContainer.innerHTML = `
+      <h2 class="mensagem__titulo">
+        There is no video with the given term :(
+      </h2>
+    `
+  }
+
   videosContainer.innerHTML = "";
 
   videos.forEach(video => {

@@ -22,11 +22,20 @@ function buildVideoLi(video) {
 }
 
 async function listVideos() {
-  const videos = await getVideos();
+  try {
+    const videos = await getVideos();
 
-  videos.forEach(video => {
-    videosContainer.appendChild(buildVideoLi(video));
-  });
+    videos.forEach(video => {
+      videosContainer.appendChild(buildVideoLi(video));
+    });
+  } catch (error) {
+    videosContainer.innerHTML = `
+      <h2 class="mensagem__titulo">
+        Unable to load the list of videos.
+        ${error}
+      </h2>
+    `
+  }
 }
 
 listVideos();
