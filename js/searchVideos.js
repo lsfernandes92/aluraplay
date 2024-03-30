@@ -10,10 +10,8 @@ async function searchVideos(event) {
 
   const videos = await getVideos(searchInput);
 
-  while (videosContainer.firstChild) {
-    videosContainer.removeChild(videosContainer.firstChild);
-  }
-  
+  videosContainer.innerHTML = "";
+
   videos.forEach(video => {
     videosContainer.appendChild(buildVideoLi(video));
   });
