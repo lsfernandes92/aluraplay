@@ -30,3 +30,5 @@ async function listVideos() {
 }
 
 listVideos();
+
+export { videosContainer, buildVideoLi }

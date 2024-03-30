@@ -30,4 +30,11 @@ async function postVideo(payload) {
   return response;
 }
 
-export { getVideos, postVideo }
+async function searchVideos(searchInput) {
+  const request = await fetch(`http://localhost:3000/videos?q=${searchInput}`);
+  const response = await request.json();
+
+  return response;
+}
+
+export { getVideos, postVideo, searchVideos }
